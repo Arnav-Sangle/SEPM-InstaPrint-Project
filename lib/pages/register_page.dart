@@ -55,8 +55,15 @@ class RegisterPage extends StatelessWidget {
               children: [
                 SizedBox(height: 100),
                 // Welcome text
+                Image.asset(
+                  'assets/images/instaPrintLogo.png',
+                  width: 100,
+                  height: 100,
+                ),
+                const SizedBox(height: 50),
+                // Welcome text
                 Text(
-                  "Welcome!",
+                  "Welcome New User!",
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
