@@ -1,6 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'package:insta_print_app/pages/home_page.dart';
 import 'package:insta_print_app/pages/login_page.dart';
+import 'package:insta_print_app/pages/register_page.dart';
+import 'package:insta_print_app/pages/shop_selection_page.dart';
+import 'package:insta_print_app/pages/upload_document_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +26,15 @@ class MyApp extends StatelessWidget {
         // useMaterial3: true, // Material 3 is not yet stable
       ),
       home: LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
+        '/home': (context) => HomePage(),
+        '/shopSelection': (context) => ShopSelectionPage(),
+        '/uploadDocument': (context) => UploadDocumentPage(),
+        // Add other routes here as needed
+      },
     );
   }
 }

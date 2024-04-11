@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:insta_print_app/pages/register_page.dart';
 
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
@@ -38,6 +39,41 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+//-------------------------
+//   import 'home_page.dart';
+//
+//   class LoginPage extends StatelessWidget {
+//     final TextEditingController usernameController = TextEditingController();
+//     final TextEditingController passwordController = TextEditingController();
+//
+//     LoginPage({super.key});
+//
+//     Future<void> signIn(BuildContext context) async {
+//       try {
+//         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+//           email: usernameController.text,
+//           password: passwordController.text,
+//         );
+//         SnackBar snackBar = SnackBar(
+//           content: Text('Signed in as ${userCredential.user!.email}'),
+//           backgroundColor: Colors.green,
+//         );
+//         // Navigate to the HomePage with the user object
+//         Navigator.pushReplacement(
+//           context,
+//           MaterialPageRoute(builder: (context) => HomePage(user: userCredential.user!)),
+//         );
+//       } catch (e) {
+//         // Handle sign-in errors.
+//         print('Error signing in: $e');
+//         SnackBar snackBar = SnackBar(
+//           content: Text('Error signing in: $e'),
+//           backgroundColor: Colors.red,
+//         );
+//       }
+//     }
+//    }
+//---------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -167,11 +203,20 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         ),
                         const SizedBox(width: 10,),
-                        Text(
-                          'Register now',style: TextStyle(
-                            color: Colors.blue[500],
-                            fontWeight: FontWeight.bold
-                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RegisterPage()),
+                            );
+                          },
+                          child: Text(
+                            'Register now',
+                            style: TextStyle(
+                              color: Colors.blue[500],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ],
                     ),
