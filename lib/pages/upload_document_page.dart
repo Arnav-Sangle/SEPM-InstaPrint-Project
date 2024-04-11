@@ -3,8 +3,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import '../components/button_widget.dart';
-import '../api/firebase_api.dart';
+import 'package:insta_print_app/components/button_widget.dart';
+import 'package:insta_print_app/api/firebase_api.dart';
 
 class UploadPage extends StatefulWidget {
   @override
@@ -21,42 +21,57 @@ class _UploadPageState extends State<UploadPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upload File'),
+        title: Text(
+          'Upload File',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+            fontWeight: FontWeight.bold, // Set text font weight to bold
+          ),
+        ),
+        backgroundColor: Color.fromRGBO(72, 191, 250, 1.0),
         centerTitle: true,
       ),
       body: Container(
         padding: EdgeInsets.all(32),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(
-                text: 'Select File',
-                icon: Icons.attach_file,
-                onClicked: selectFile,
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonWidget(
+                      text: 'Select File',
+                      icon: Icons.attach_file,
+                      onClicked: selectFile,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      fileName,
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 48),
+                    ButtonWidget(
+                      text: 'Upload File',
+                      icon: Icons.cloud_upload_outlined,
+                      onClicked: uploadFile,
+                    ),
+                    SizedBox(height: 20),
+                    task != null ? buildUploadStatus(task!) : Container(),
+                    const SizedBox(height: 50),
+                  ],
+                ),
               ),
-              SizedBox(height: 8),
-              Text(
-                fileName,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: 48),
-              ButtonWidget(
-                text: 'Upload File',
-                icon: Icons.cloud_upload_outlined,
-                onClicked: uploadFile,
-              ),
-              SizedBox(height: 20),
-              task != null ? buildUploadStatus(task!) : Container(),
-              ButtonWidget(
-                text: 'Send Print Request',
-                icon: Icons.send,
-                onClicked: navigateToRequestHistory,
-              ),
-              SizedBox(height: 20),
-              task != null ? buildUploadStatus(task!) : Container(),
-            ],
-          ),
+            ),
+            ButtonWidget(
+              text: 'Send Print Request',
+              icon: Icons.send,
+              onClicked: () {
+                Navigator.pushNamed(context, '/requestHistory');
+              },
+            ),
+            SizedBox(height: 20),
+          ],
         ),
       ),
     );
@@ -86,10 +101,6 @@ class _UploadPageState extends State<UploadPage> {
     final urlDownload = await snapshot.ref.getDownloadURL();
 
     print('Download-Link: $urlDownload');
-  }
-
-  void navigateToRequestHistory() {
-    Navigator.pushNamed(context, '/requestHistory');
   }
 
   Widget buildUploadStatus(UploadTask task) => StreamBuilder<TaskSnapshot>(

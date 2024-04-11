@@ -45,7 +45,15 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shop Selection Page'),
+        title: const Text('Shop Selection Page',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+            fontWeight: FontWeight.bold, // Set text font weight to bold
+          ),
+        ),
+        // backgroundColor: Color.fromRGBO(113, 208, 255, 1.0),
+        backgroundColor: Color.fromRGBO(72, 191, 250, 1.0),
+        centerTitle: true,
       ),
       body: Stack(
         children: [

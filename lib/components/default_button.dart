@@ -37,13 +37,13 @@ class _DefaultButtonState extends State<DefaultButton> {
       child: Container(
         width: MediaQuery.of(context).size.width / 1.7,
         height: MediaQuery.of(context).size.height / 14,
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
-          color: _isPressed ? Colors.grey[200] : Colors.white,
+          color: _isPressed ? Colors.blue[200] : Colors.blue[300],
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: _isPressed ? Colors.grey[300]! : Colors.transparent,
+            color: _isPressed ? Colors.blue[300]! : Colors.transparent,
             width: 1,
           ),
         ),
@@ -51,7 +51,8 @@ class _DefaultButtonState extends State<DefaultButton> {
           child: Text(
             widget.text,
             style: TextStyle(
-              color: Colors.purple,
+              // color: Color.fromRGBO(178, 227, 252, 1.0),
+              color: Color.fromRGBO(255, 255, 255, 1.0),
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),

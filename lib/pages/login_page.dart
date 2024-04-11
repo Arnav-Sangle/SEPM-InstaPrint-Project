@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 // Custom Image Logo
                 Image.asset(
                   'assets/images/instaPrintLogo.png',
