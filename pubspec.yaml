@@ -34,6 +34,10 @@ dependencies:
   firebase_auth: ^4.19.1
   google_sign_in: ^6.2.1
 
+  # upload
+  firebase_storage: ^11.7.1
+  file_picker: ^8.0.0
+
   flutter_map: ^6.1.0
   latlong2: ^0.9.1
   url_launcher: ^6.2.5

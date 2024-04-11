@@ -94,4 +94,5 @@ class DefaultFirebaseOptions {
     authDomain: 'insta-print-app.firebaseapp.com',
     storageBucket: 'insta-print-app.appspot.com',
   );
+
 }

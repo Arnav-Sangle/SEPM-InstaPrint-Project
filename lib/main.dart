@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_print_app/pages/home_page.dart';
 import 'package:insta_print_app/pages/login_page.dart';
 import 'package:insta_print_app/pages/register_page.dart';
+import 'package:insta_print_app/pages/request_history_page.dart';
 import 'package:insta_print_app/pages/shop_selection_page.dart';
 import 'package:insta_print_app/pages/upload_document_page.dart';
 
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterPage(),
         '/home': (context) => HomePage(),
         '/shopSelection': (context) => ShopSelectionPage(),
-        '/uploadDocument': (context) => UploadDocumentPage(),
+        '/uploadDocument': (context) => UploadPage(),
+        '/requestHistory': (context) => RequestHistoryPage(),
         // Add other routes here as needed
       },
     );

@@ -9,9 +9,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'upload_document_page.dart';
 
-
-
-
 class Shop {
   final String name;
   final double lat;
@@ -20,7 +17,6 @@ class Shop {
   Shop({required this.name, required this.lat, required this.lng});
   
 }
-
 
 class ShopSelectionPage extends StatefulWidget {
   @override
@@ -44,8 +40,6 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
   //   'Samarpanam Stationary & Xerox': 'Address 4, Price Rates: $4 (B&W), $8 (Color), Quality: Medium',
   //   'Copy line': 'Address 5, Price Rates: $3 (B&W), $6 (Color), Quality: Good',
   // };
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +65,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     );
   }
 
+  //
 
   final MapController mapController = MapController();
 
@@ -89,6 +84,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     );
   }
 
+  //
 
   String selectedShop = 'SK Print, PCCOE';
 
@@ -114,6 +110,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     }).toList();
   }
 
+  //
 
   void showShopList() {
     showModalBottomSheet(
@@ -174,21 +171,6 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
 
 
 
-  // void showShopDetails(BuildContext context, String shopName) {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return Container(
-  //         height: 200,
-  //         width: 300,
-  //         color: Colors.white,
-  //         child: Center(
-  //           child: Text(shopName),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
 
 
   void showShopDetails(BuildContext context, String shopName) {
