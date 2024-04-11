@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461147263039",
+    "project_id": "insta-print-app",
+    "storage_bucket": "insta-print-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461147263039:android:081edcfa16812229a2688a",
+        "android_client_info": {
+          "package_name": "com.example.insta_print_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMHGA8EBHJaeGuVAAkt0o3ogDhwIZhNOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
