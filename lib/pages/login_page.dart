@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:insta_print_app/pages/register_page.dart';
+import 'package:insta_print_app/pages/home_page.dart'; // Import home page
 
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 import '../components/square_tile.dart';
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,14 +21,14 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  Future<void> signIn() async {
+  Future<void> signIn(BuildContext context) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: usernameController.text,
         password: passwordController.text,
       );
 
-      // If successful, navigate to the next screen
+      // If successful, navigate to the next screen (home page)
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
@@ -38,42 +38,6 @@ class _LoginPageState extends State<LoginPage> {
       print("Error signing in: $e");
     }
   }
-
-//-------------------------
-//   import 'home_page.dart';
-//
-//   class LoginPage extends StatelessWidget {
-//     final TextEditingController usernameController = TextEditingController();
-//     final TextEditingController passwordController = TextEditingController();
-//
-//     LoginPage({super.key});
-//
-//     Future<void> signIn(BuildContext context) async {
-//       try {
-//         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-//           email: usernameController.text,
-//           password: passwordController.text,
-//         );
-//         SnackBar snackBar = SnackBar(
-//           content: Text('Signed in as ${userCredential.user!.email}'),
-//           backgroundColor: Colors.green,
-//         );
-//         // Navigate to the HomePage with the user object
-//         Navigator.pushReplacement(
-//           context,
-//           MaterialPageRoute(builder: (context) => HomePage(user: userCredential.user!)),
-//         );
-//       } catch (e) {
-//         // Handle sign-in errors.
-//         print('Error signing in: $e');
-//         SnackBar snackBar = SnackBar(
-//           content: Text('Error signing in: $e'),
-//           backgroundColor: Colors.red,
-//         );
-//       }
-//     }
-//    }
-//---------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +50,9 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-                // Logo--------------
-                // const Icon(
-                //   Icons.lock,
-                //   size: 100,
-                // ),
-                //---------------
-                // Custom Image Logo----------------
+                // Custom Image Logo
                 Image.asset(
-                  'assets/images/instaPrintLogo.png', // Replace this with the path to your custom lock icon
+                  'assets/images/instaPrintLogo.png',
                   width: 100,
                   height: 100,
                 ),
@@ -135,9 +93,10 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                          'Forgot password?' ,style: TextStyle(
-                        color: Colors.grey[600],
-                      )
+                        'Forgot password?',
+                        style: TextStyle(
+                          color: Colors.blue[600],
+                        ),
                       ),
                     ],
                   ),
@@ -145,11 +104,10 @@ class _LoginPageState extends State<LoginPage> {
 
                 // Log in button
                 const SizedBox(height: 25,),
-                ElevatedButton(
-                  onPressed: signIn,
-                  child: Text('Log In'),
+                MyButton(
+                  text: 'Log In',
+                  onTap: () => signIn(context), // Call signIn function with context
                 ),
-
                 //Or text
 
                 const SizedBox(height: 50),

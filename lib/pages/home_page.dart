@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../components/default_button.dart';
+
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,20 +28,19 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 50),
             // Section 1: Create print request
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to create print request page
+            DefaultButton(
+              text: "Create Print Request",
+              onTap: () {
                 Navigator.pushNamed(context, '/shopSelection');
               },
-              child: Text('Create Print Request'),
             ),
             SizedBox(height: 20),
             // Section 2: Review previous requests
-            ElevatedButton(
-              onPressed: () {
+            DefaultButton(
+              onTap: () {
                 // Navigate to review previous requests page
               },
-              child: Text('Review Previous Requests'),
+              text: "Review Previous Request",
             ),
           ],
         ),
