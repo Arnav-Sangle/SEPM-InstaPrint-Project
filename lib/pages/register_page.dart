@@ -6,30 +6,48 @@ import '../components/my_textfield.dart';
 import '../components/square_tile.dart';
 import 'login_page.dart';
 
-class RegisterPage extends StatelessWidget {
+import 'package:insta_print_app/api/firestore.dart';
+
+
+String selectedRegister = 'Login Student';
+
+class RegisterPage extends StatefulWidget {
+  RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   // Text editing controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-  TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+  final FirestoreServices firestoreServices = FirestoreServices();
 
-  RegisterPage({super.key});
+  bool isStudent = true;
 
   Future<void> register(BuildContext context) async {
     try {
       if (passwordController.text != confirmPasswordController.text) {
-        SnackBar snackBar = const SnackBar(
-          content: Text('Passwords do not match'),
-          backgroundColor: Colors.red,
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Passwords do not match'),
+            backgroundColor: Colors.red,
+          ),
         );
         return;
       }
 
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
+
+      selectedRegister = isStudent ? 'Login Student' : 'Login Shop';
+
+      // Add the registration data to Firestore
+      firestoreServices.addRegister(emailController.text);
 
       // Navigate to the login page after successful registration
       Navigator.pushReplacement(
@@ -53,7 +71,7 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 100),
+                SizedBox(height: 20),
                 // Welcome text
                 Image.asset(
                   'assets/images/instaPrintLogo.png',
@@ -67,6 +85,44 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
+                  ),
+                ),
+
+                // Register as a Shop or User
+                SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: isStudent,
+                            onChanged: (value) {
+                              setState(() {
+                                isStudent = value ?? true;
+                              });
+                            },
+                          ),
+                          Text('Student'),
+                        ],
+                      ),
+                      SizedBox(width: 20),
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: !isStudent,
+                            onChanged: (value) {
+                              setState(() {
+                                isStudent = !(value ?? false);
+                              });
+                            },
+                          ),
+                          Text('Shop'),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
 

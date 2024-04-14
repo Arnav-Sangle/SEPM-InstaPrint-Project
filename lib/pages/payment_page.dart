@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
 import 'package:upi_india/upi_india.dart';
 
-
 class PaymentPage extends StatefulWidget{
   PaymentPage({Key?key}) : super(key: key);
 
@@ -41,7 +40,9 @@ class _PaymentPageState extends State<PaymentPage> {
         app: app,
         receiverUpiId: "vedantsonawanescitech@okhdfcbank",
         receiverName: 'Vedant',
-        amount: pay, transactionRefId: 'Test',
+        transactionRefId: 'TestingUpiIndiaPlugin',
+        transactionNote: 'Not actual. Just an example.',
+        amount:pay,
       );
     }
     return  MaterialApp(

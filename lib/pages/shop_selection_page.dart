@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'upload_document_page.dart';
 
-String selectedShop = '';
+String selectedShop = 'SK Print, PCCOE';
 
 class Shop {
   final String name;

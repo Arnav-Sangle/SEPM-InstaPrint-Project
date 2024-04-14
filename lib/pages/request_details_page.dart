@@ -23,6 +23,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   bool isPortrait = true;
   int copies = 1;
   int pages = 1;
+  String email = 'null';
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +186,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                 SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
-                    firestoreServices.add(pages, isBlackAndWhite);
+                    firestoreServices.add(email, fileName, pages, isBlackAndWhite, isSingleSided, isPortrait, copies);
                     Navigator.pushNamed(context, '/payment');
                   },
                   child: Text('Pay up'),
