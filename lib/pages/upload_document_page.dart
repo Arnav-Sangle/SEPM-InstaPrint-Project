@@ -67,7 +67,7 @@ class _UploadPageState extends State<UploadPage> {
               text: 'Send Print Request',
               icon: Icons.send,
               onClicked: () {
-                Navigator.pushNamed(context, '/requestHistory');
+                Navigator.pushNamed(context, '/requestDetails');
               },
             ),
             SizedBox(height: 20),

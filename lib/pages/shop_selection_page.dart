@@ -94,7 +94,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
 
   //
 
-  String selectedShop = 'SK Print, PCCOE';
+  String selectedShop = '';
 
   List<Marker> createMarkers(List<Shop> shops, BuildContext context) {
     return shops.map((shop) {

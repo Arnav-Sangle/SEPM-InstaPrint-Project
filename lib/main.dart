@@ -4,7 +4,9 @@ import 'package:flutter/src/material/colors.dart';
 
 import 'package:insta_print_app/pages/home_page.dart';
 import 'package:insta_print_app/pages/login_page.dart';
+import 'package:insta_print_app/pages/payment_page.dart';
 import 'package:insta_print_app/pages/register_page.dart';
+import 'package:insta_print_app/pages/request_details_page.dart';
 import 'package:insta_print_app/pages/request_history_page.dart';
 import 'package:insta_print_app/pages/shop_selection_page.dart';
 import 'package:insta_print_app/pages/upload_document_page.dart';
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
         '/shopSelection': (context) => ShopSelectionPage(),
         '/uploadDocument': (context) => UploadPage(),
         '/requestHistory': (context) => RequestHistoryPage(),
+        '/requestDetails': (context) => RequestDetailsPage(),
+        '/payment': (context) => PaymentPage(),
         // Add other routes here as needed
       },
     );

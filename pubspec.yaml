@@ -33,6 +33,8 @@ dependencies:
   firebase_core: ^2.29.0
   firebase_auth: ^4.19.1
   google_sign_in: ^6.2.1
+  upi_payment_qrcode_generator: 1.4.0
+  upi_india: 3.0.1
 
   # upload
   firebase_storage: ^11.7.1
