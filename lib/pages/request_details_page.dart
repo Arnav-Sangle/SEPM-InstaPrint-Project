@@ -1,12 +1,11 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_print_app/api/firestore.dart';
 
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import 'package:insta_print_app/components/button_widget.dart';
+//import 'package:insta_print_app/components/button_widget.dart';
 import 'package:insta_print_app/api/firebase_api.dart';
 
 
@@ -23,10 +22,12 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   bool isSingleSided = true;
   bool isPortrait = true;
   int copies = 1;
+  int pages = 1;
 
   @override
   Widget build(BuildContext context) {
     final fileName = file != null ? basename(file!.path) : 'No File Selected';
+    final FirestoreServices firestoreServices = FirestoreServices();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +49,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
               keyboardType: TextInputType.number,
               onChanged: (value) {
                 setState(() {
-                  copies = int.tryParse(value) ?? 1;
+                  pages = int.tryParse(value) ?? 1;
                 });
               },
             ),
@@ -184,6 +185,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                 SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
+                    firestoreServices.add(pages, isBlackAndWhite);
                     Navigator.pushNamed(context, '/payment');
                   },
                   child: Text('Pay up'),

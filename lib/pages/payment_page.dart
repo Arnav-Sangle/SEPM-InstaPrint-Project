@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';

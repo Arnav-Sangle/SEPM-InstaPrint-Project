@@ -9,6 +9,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'upload_document_page.dart';
 
+String selectedShop = '';
+
 class Shop {
   final String name;
   final double lat;
@@ -94,7 +96,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
 
   //
 
-  String selectedShop = '';
+
 
   List<Marker> createMarkers(List<Shop> shops, BuildContext context) {
     return shops.map((shop) {
@@ -176,6 +178,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     showShopDetails(context, shopName);
 
   }
+
 
 
 
@@ -289,7 +292,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to the Upload Document page
-                      Navigator.pushNamed(context, '/uploadDocument');
+                      Navigator.pushNamed(context, '/requestDetails');
                     },
                     child: Text('Proceed'),
                   ),
@@ -325,3 +328,4 @@ TileLayer get openStreetMapTileLayer => TileLayer(
 
 // Inside the showSheet() function, a list of shops with their names ('SK Print, PCCOE', 'Jinal Xerox', 'Bhakti Copiers', 'Samarpanam Stationary & Xerox', 'Copy line') should be shown,
 // when a shop is selected from the list its information (name, address, price) should be shown below and the location_pin of that shop on the map turns red
+
