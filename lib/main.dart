@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterPage(),
         '/home': (context) => HomePage(),
         '/shopSelection': (context) => ShopSelectionPage(),
-        '/uploadDocument': (context) => UploadPage(),
+        // '/uploadDocument': (context) => UploadPage(),
         '/requestHistory': (context) => RequestHistoryPage(),
         '/requestDetails': (context) => RequestDetailsPage(),
         '/requestHistoryDetails': (context) => RequestHistoryDetailsPage(),
