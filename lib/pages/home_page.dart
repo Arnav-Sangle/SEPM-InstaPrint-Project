@@ -1,3 +1,5 @@
+//LOC = 54
+
 import 'package:flutter/material.dart';
 
 import '../components/default_button.dart';

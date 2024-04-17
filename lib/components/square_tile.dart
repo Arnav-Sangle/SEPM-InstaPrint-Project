@@ -1,3 +1,5 @@
+//LOC = 70
+
 import 'package:flutter/material.dart';
 
 class SquareTile extends StatelessWidget {

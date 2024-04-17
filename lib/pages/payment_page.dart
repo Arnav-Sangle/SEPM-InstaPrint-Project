@@ -1,7 +1,10 @@
+//LOC = 101
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
 import 'package:upi_india/upi_india.dart';
+import 'package:insta_print_app/pages/request_details_page.dart';
 
 class PaymentPage extends StatefulWidget{
   PaymentPage({Key?key}) : super(key: key);
@@ -11,13 +14,13 @@ class PaymentPage extends StatefulWidget{
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-  int pages=23;
+  // int pages=23;
 
-  double rate=2;
+  // double rate=2;
 
-  bool bW =true;
+  // bool bW =true;
 
-  double pay=0;
+  double pay=cost;
 
   UpiIndia _upiIndia = UpiIndia();
 
@@ -25,11 +28,11 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context){
-    if (pages % 2 == 0){
-      pay = (pages / 2) * rate;} // Calculate pay here
-    else {
-      pay = (pages / 2) * rate + 1;
-    }
+    // if (pages % 2 == 0){
+    //   pay = (pages / 2) * rate;} // Calculate pay here
+    // else {
+    //   pay = (pages / 2) * rate + 1;
+    // }
     final upiDetails = UPIDetails(
       upiID: "vedantsonawanescitech@okhdfcbank",
       payeeName: "Vedant",
@@ -57,10 +60,10 @@ class _PaymentPageState extends State<PaymentPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '${pages / 2 * rate} INR', // Display the result here
+                '${pay} INR', // Display the result here
                 style: const TextStyle(fontSize: 24),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               UPIPaymentQRCode(upiDetails: upiDetails, size: 200,),
               Center(
                 child: Column(
@@ -87,22 +90,31 @@ class _PaymentPageState extends State<PaymentPage> {
         bottomNavigationBar: BottomNavigationBar(
           items:const [
             BottomNavigationBarItem(
-                label: 'Home',
+                label: 'Map',
                 icon: Icon(
-                  Icons.home,
+                  Icons.map,
                   color: Colors.blue,
                   size: 24.0,
-                  semanticLabel: 'Text to announce in accessibility modes',)
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
             ),
             BottomNavigationBarItem(
-                label: 'Settings',
-                icon: Icon(Icons.settings,
+                label: 'History',
+                icon: Icon(
+                  Icons.history,
                   color: Colors.black,
                   size: 24.0,
-                  semanticLabel: 'Text to announce in accessibility modes',)
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
             ),
           ],
-
+          onTap: (int index) {
+            if (index == 0) {
+              Navigator.pushNamed(context, '/shopSelection');
+            } else if (index == 1) {
+              Navigator.pushNamed(context, '/requestHistory');
+            }
+          },
         ),
       ),
       debugShowCheckedModeBanner: false,

@@ -6,27 +6,88 @@ class RequestHistoryPage extends StatefulWidget {
 }
 
 class _RequestHistoryPageState extends State<RequestHistoryPage> {
-  // Add any state variables and methods here as needed
+  List<RequestRecord> records = [
+    RequestRecord("18/08/22", "8:00 pm", "Rs. 87", "SK Print", "Ongoing"),
+    RequestRecord("18/08/22", "8:00 pm", "Rs. 87", "SK Print", "Ongoing"),
+    // RequestRecord("Record 2", "Details 2", "Date 2", "Status 2"),
+    // Add more records here as needed
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Request History'),
-        centerTitle: true,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // You can add widgets to display request history here
-            Text(
-              'This is the request history page.',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
+          children: List.generate(records.length, (index) {
+            return buildRow(records[index]);
+          }),
         ),
       ),
     );
   }
+
+  Widget buildRow(RequestRecord record) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              record.date,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              record.time,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              record.cost,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              record.shop,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              record.status,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.0),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RequestRecord {
+  final String date;
+  final String time;
+  final String cost;
+  final String shop;
+  final String status;
+
+
+  RequestRecord(this.date, this.time, this.cost, this.shop, this.status);
 }

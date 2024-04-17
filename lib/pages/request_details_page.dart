@@ -1,3 +1,5 @@
+//LOC = 229
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:insta_print_app/api/firestore.dart';
@@ -9,6 +11,16 @@ import 'package:path/path.dart';
 import 'package:insta_print_app/api/firebase_api.dart';
 
 
+double cost = 1;
+double fixedRate = 1;
+
+bool isBlackAndWhite = true;
+bool isSingleSided = true;
+bool isPortrait = true;
+int copies = 1;
+int pages = 1;
+String email = 'null';
+
 class RequestDetailsPage extends StatefulWidget {
   @override
   _RequestDetailsPageState createState() => _RequestDetailsPageState();
@@ -18,12 +30,21 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   UploadTask? task;
   File? file;
 
-  bool isBlackAndWhite = true;
-  bool isSingleSided = true;
-  bool isPortrait = true;
-  int copies = 1;
-  int pages = 1;
-  String email = 'null';
+  // String? costPercentage;
+
+  bool costCalculated = false;
+
+  List<DataRow> buildCostTable() {
+    return [
+      DataRow(cells: [
+        DataCell(Text(pages.toString())),
+        DataCell(Text(copies.toString())),
+        DataCell(Text(fixedRate.toString())), // Example rate, you can replace it with your calculation
+        DataCell(Text(cost.toString())),
+      ]),
+    ];
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +178,11 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
               },
             ),
             SizedBox(height: 20),
+
+            // Horizontal Line
+            Divider(height: 20, thickness: 1, color: Colors.grey),
+            SizedBox(height: 30),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -173,16 +199,41 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 ElevatedButton(
                   onPressed:
                     uploadFile
                   ,
                   child: Text('Upload'),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 task != null ? buildUploadStatus(task!) : Container(),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
+
+                // Horizontal Line
+                Divider(height: 20, thickness: 1, color: Colors.grey),
+
+
+
+                // Calculate Cost Button
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () async {
+                    // Calculate the cost
+                    fixedRate = 10; // Example fixed rate
+                    cost = pages * fixedRate;
+                    setState(() {
+                      costCalculated = true;
+                    });
+                  },
+                  child: Text('Calculate Cost'),
+                ),
+
+                // Cost Calculation Table
+                SizedBox(height: 8),
+                if (costCalculated) buildCostTableStatus(),
+
+
                 SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
@@ -244,6 +295,35 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
       }
     },
   );
+
+
+  Widget buildCostTableStatus() => StreamBuilder<double>(
+    stream: calculateCost(),
+    builder: (context, snapshot) {
+      if (snapshot.hasData) {
+        return DataTable(
+          columns: [
+            DataColumn(label: Text('Pages')),
+            DataColumn(label: Text('Copies')),
+            DataColumn(label: Text('Rates')),
+            DataColumn(label: Text('Total')),
+          ],
+          rows: buildCostTable(),
+        );
+      } else {
+        return Container();
+      }
+    },
+  );
+
+  Stream<double> calculateCost() async* {
+    // Calculate the cost
+    fixedRate = 10; // Example fixed rate
+    cost = pages * fixedRate * copies;
+
+    // Yield the cost value
+    yield cost;
+  }
 
 }
 

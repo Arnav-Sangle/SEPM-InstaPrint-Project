@@ -1,3 +1,5 @@
+//LOC = 196
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +11,7 @@ import 'login_page.dart';
 import 'package:insta_print_app/api/firestore.dart';
 
 
-String selectedRegister = 'Login Student';
+String selectedRegister = 'blank';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController confirmPasswordController = TextEditingController();
   final FirestoreServices firestoreServices = FirestoreServices();
 
-  bool isStudent = true;
+  // bool isStudent = true;
 
   Future<void> register(BuildContext context) async {
     try {
@@ -44,16 +46,15 @@ class _RegisterPageState extends State<RegisterPage> {
         password: passwordController.text,
       );
 
-      selectedRegister = isStudent ? 'Login Student' : 'Login Shop';
+      // selectedRegister = isStudent ? 'Login Student' : 'Login Shop';
 
-      // Add the registration data to Firestore
-      firestoreServices.addRegister(emailController.text);
+
 
       // Navigate to the login page after successful registration
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => LoginPage()),
+      // );
     } catch (e) {
       // Handle registration errors
       print('Error registering user: $e');
@@ -90,6 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // Register as a Shop or User
                 SizedBox(height: 25),
+                Text("selectedRegister = $selectedRegister"),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
@@ -97,31 +99,33 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Row(
                         children: [
-                          Checkbox(
-                            value: isStudent,
+
+                          Radio(
+                            value: 'Login Student',
+                            groupValue: selectedRegister,
                             onChanged: (value) {
                               setState(() {
-                                isStudent = value ?? true;
+                                selectedRegister = value??"";
                               });
                             },
                           ),
                           Text('Student'),
-                        ],
-                      ),
-                      SizedBox(width: 20),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: !isStudent,
+
+                          SizedBox(width: 20),
+
+                          Radio(
+                            value: 'Login Shop',
+                            groupValue: selectedRegister,
                             onChanged: (value) {
                               setState(() {
-                                isStudent = !(value ?? false);
+                                selectedRegister = value??"";
                               });
                             },
                           ),
                           Text('Shop'),
                         ],
                       ),
+                      SizedBox(width: 20),
                     ],
                   ),
                 ),
@@ -171,7 +175,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 25),
                 MyButton(
                   text: 'Register Now',
-                  onTap: () => register(context),
+                  onTap: () {
+                    register(context);
+                    // Add the registration data to Firestore
+                    firestoreServices.addRegister(emailController.text);
+                    Navigator.pushNamed(context, '/login');
+                  }
                 ),
 
                 // Already a member, login now

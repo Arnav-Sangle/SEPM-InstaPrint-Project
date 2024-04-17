@@ -1,3 +1,5 @@
+//LOC = 59
+
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatefulWidget {

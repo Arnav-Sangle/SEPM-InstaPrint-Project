@@ -1,3 +1,5 @@
+//LOC = 24
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:insta_print_app/pages/shop_selection_page.dart';
 import 'package:insta_print_app/pages/register_page.dart';
@@ -8,8 +10,10 @@ class FirestoreServices {
   final CollectionReference shop =
       FirebaseFirestore.instance.collection(selectedShop);
 
-  final CollectionReference register =
-    FirebaseFirestore.instance.collection(selectedRegister);
+  final CollectionReference shopDetails =
+  FirebaseFirestore.instance.collection(selectedShop);
+
+
 
   // create
   Future<void> add(String email, String fileName, int pages, bool color, bool sided, bool orientation, int copies) {
@@ -26,6 +30,9 @@ class FirestoreServices {
   }
 
   Future<void> addRegister(String email) {
+    final CollectionReference register =
+    FirebaseFirestore.instance.collection(selectedRegister);
+
     return register.add({
       'email' : email
     });
@@ -50,4 +57,21 @@ class FirestoreServices {
   Future<void> deleteNote(String docID) {
     return shop.doc(docID).delete();
   }
+
+
+
+
+  Future<void> addShopDetails(String email, String fileName, int pages, bool color, bool sided, bool orientation, int copies) {
+    return shopDetails.add({
+      'email' : email,
+      'timestamp' : Timestamp.now(),
+      'document' : fileName,
+      'pages' : pages,
+      'color' : color,
+      'sided' : sided,
+      'orientation' : orientation,
+      'copies' : copies
+    });
+  }
+
 }
