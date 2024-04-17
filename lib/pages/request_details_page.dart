@@ -20,6 +20,7 @@ bool isPortrait = true;
 int copies = 1;
 int pages = 1;
 String email = 'null';
+String nameOfFile = 'null';
 
 class RequestDetailsPage extends StatefulWidget {
   @override
@@ -50,6 +51,8 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
   Widget build(BuildContext context) {
     final fileName = file != null ? basename(file!.path) : 'No File Selected';
     final FirestoreServices firestoreServices = FirestoreServices();
+
+    nameOfFile = fileName;
 
     return Scaffold(
       appBar: AppBar(
@@ -240,7 +243,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                     firestoreServices.add(email, fileName, pages, isBlackAndWhite, isSingleSided, isPortrait, copies);
                     Navigator.pushNamed(context, '/payment');
                   },
-                  child: Text('Pay up'),
+                  child: Text('Pay Up'),
                 ),
               ],
             ),
@@ -256,13 +259,17 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
     if (result == null) return;
     final path = result.files.single.path!;
 
-    setState(() => file = File(path));
+    setState(() {
+      file = File(path);
+    });
+
   }
 
   Future uploadFile() async {
     if (file == null) return;
 
     final fileName = basename(file!.path);
+    // nameOfFile = fileName;
     final destination = 'files/$fileName';
 
     task = FirebaseApi.uploadFile(destination, file!);

@@ -90,8 +90,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
 
                 // Register as a Shop or User
-                SizedBox(height: 25),
-                Text("selectedRegister = $selectedRegister"),
+                // SizedBox(height: 25),
+                // Text("selectedRegister = $selectedRegister"),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Row(

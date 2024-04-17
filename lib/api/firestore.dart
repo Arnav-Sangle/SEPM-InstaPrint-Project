@@ -25,7 +25,8 @@ class FirestoreServices {
       'color' : color,
       'sided' : sided,
       'orientation' : orientation,
-      'copies' : copies
+      'copies' : copies,
+      'status' : 'Ongoing'
     });
   }
 

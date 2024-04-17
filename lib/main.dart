@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -51,12 +50,13 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterPage(),
         '/home': (context) => HomePage(),
         '/shopSelection': (context) => ShopSelectionPage(),
-        '/uploadDocument': (context) => UploadPage(),
-        '/requestHistory': (context) => RequestHistoryPage(),
+        // '/uploadDocument': (context) => UploadPage(),
         '/requestDetails': (context) => RequestDetailsPage(),
+        '/payment': (context) => PaymentPage(),
+
+        '/requestHistory': (context) => RequestHistoryPage(),
         '/requestHistoryDetails': (context) => RequestHistoryDetailsPage(),
 
-        '/payment': (context) => PaymentPage(),
         // Add other routes here as needed
       },
     );

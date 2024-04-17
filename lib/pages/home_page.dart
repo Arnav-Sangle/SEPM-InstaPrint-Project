@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             // Section 2: Review previous requests
             DefaultButton(
               onTap: () {
-                // Navigate to review previous requests page
+                Navigator.pushNamed(context, '/requestHistory');
               },
               text: "Review Previous Request",
             ),

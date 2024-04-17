@@ -90,10 +90,19 @@ class _PaymentPageState extends State<PaymentPage> {
         bottomNavigationBar: BottomNavigationBar(
           items:const [
             BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(
+                Icons.home,
+                color: Colors.blue,
+                size: 24.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+              ),
+            ),
+            BottomNavigationBarItem(
                 label: 'Map',
                 icon: Icon(
                   Icons.map,
-                  color: Colors.blue,
+                  color: Colors.black,
                   size: 24.0,
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
@@ -110,8 +119,11 @@ class _PaymentPageState extends State<PaymentPage> {
           ],
           onTap: (int index) {
             if (index == 0) {
-              Navigator.pushNamed(context, '/shopSelection');
+              Navigator.pushNamed(context, '/home');
             } else if (index == 1) {
+              // Navigator.pushNamed(context, '/shopSelection');
+              Navigator.pushNamed(context, '/requestHistoryDetails');
+            } else if (index == 2) {
               Navigator.pushNamed(context, '/requestHistory');
             }
           },
