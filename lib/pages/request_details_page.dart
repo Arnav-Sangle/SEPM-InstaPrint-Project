@@ -223,8 +223,8 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
                 ElevatedButton(
                   onPressed: () async {
                     // Calculate the cost
-                    fixedRate = 10; // Example fixed rate
-                    cost = pages * fixedRate;
+                    // fixedRate = 2; // Example fixed rate
+                    // cost = pages * fixedRate;
                     setState(() {
                       costCalculated = true;
                     });
@@ -325,7 +325,7 @@ class _RequestDetailsPageState extends State<RequestDetailsPage> {
 
   Stream<double> calculateCost() async* {
     // Calculate the cost
-    fixedRate = 10; // Example fixed rate
+    fixedRate = 2; // Example fixed rate
     cost = pages * fixedRate * copies;
 
     // Yield the cost value

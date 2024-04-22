@@ -198,10 +198,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         SizedBox(width: 10),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoginPage()),
-                            );
+                            Navigator.pushNamed(context, '/login');
+                            // Navigator.pushReplacement(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) => LoginPage()),
+                            // );
                           },
                           child: Text(
                             'Login now',

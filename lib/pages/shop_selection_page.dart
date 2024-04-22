@@ -151,7 +151,7 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     return ListTile(
       title: Text(shopName),
       selected: selectedShop == shopName,
-      onTap: () => selectShop(shopName) ,
+      onTap: () => selectShop(shopName),
     );
   }
 
@@ -191,42 +191,47 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
     final shopDetails = {
       'SK Print, PCCOE': {
         'image': 'assets/images/SK Print, PCCOE.png',
-        'address': '123 Main St, Anytown, AT 12345',
-        'mapLink': 'https://www.google.com/maps',
-        'bwRate': '0.10',
-        'colorRate': '0.50',
+        'address': 'Pimpri Chinchwad College of Engineering, Sector No. 26, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044',
+        // 'mapLink': 'https://www.google.com/maps',
+        'timing': 'Closes 7pm',
+        'bwRate': '2',
+        'colorRate': '10',
         'quality': 'High',
       },
       'Jinal Xerox': {
         'image': 'assets/images/Jinal Xerox.png',
-        'address': '123 Main St, Anytown, AT 12345',
-        'mapLink': 'https://www.google.com/maps',
-        'bwRate': '0.10',
-        'colorRate': '0.50',
+        'address': 'Akurdi Railway Station Rd, Sector No. 26, Pradhikaran, Nigdi, Pimpri-Chinchwad, Maharashtra 411044',
+        // 'mapLink': 'https://www.google.com/maps',
+        'timing': 'Closes 10pm',
+        'bwRate': '2',
+        'colorRate': '10',
         'quality': 'High',
       },
       'Bhakti Copiers': {
         'image': 'assets/images/Bhakti Copiers.png',
-        'address': '123 Main St, Anytown, AT 12345',
-        'mapLink': 'https://www.google.com/maps',
-        'bwRate': '0.10',
-        'colorRate': '0.50',
+        'address': 'Shop No R4, Dhruv darshan Society PCP College, Pimpri-Chinchwad, Maharashtra 411044',
+        // 'mapLink': 'https://www.google.com/maps',
+        'timing': 'Closes 10pm',
+        'bwRate': '2',
+        'colorRate': '10',
         'quality': 'High',
       },
       'Samarpanam Stationary & Xerox': {
         'image': 'assets/images/Samarpanam Stationary & Xerox.png',
-        'address': '123 Main St, Anytown, AT 12345',
-        'mapLink': 'https://www.google.com/maps',
-        'bwRate': '0.10',
-        'colorRate': '0.50',
+        'address': 'Shop No-12, A Wing, Sector No. 26, Pradhikaran, Nigdi, Pune, Pimpri-Chinchwad, Maharashtra 411044',
+        // 'mapLink': 'https://www.google.com/maps',
+        'timing': 'Closes 9pm',
+        'bwRate': '2',
+        'colorRate': '10',
         'quality': 'High',
       },
       'Copy line': {
         'image': 'assets/images/Copy line.png',
-        'address': '123 Main St, Anytown, AT 12345',
-        'mapLink': 'https://www.google.com/maps',
-        'bwRate': '0.10',
-        'colorRate': '0.50',
+        'address': 'Prakash Gad Society, near Pccoe College, GPRA Quarters, Sector No. 26, Pradhikaran, Akurdi, Pimpri-Chinchwad, Maharashtra 411044',
+        // 'mapLink': 'https://www.google.com/maps',
+        'timing': 'Closes 9pm',
+        'bwRate': '2',
+        'colorRate': '10',
         'quality': 'High',
       },
       // ... Add details for other shops
@@ -260,21 +265,22 @@ class _ShopSelectionPageState extends State<ShopSelectionPage> {
                           shopName,
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 5),
                         Text('Address: ${details['address']}'),
-                        InkWell(
-                          onTap: () {
-                            // Open the map link
-                            launchUrlString(details['mapLink']??"");
-                          },
-                          child: Text(
-                            'View on Map',
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text('B&W Rate: \$${details['bwRate']}'),
-                        Text('Color Rate: \$${details['colorRate']}'),
+                        SizedBox(height: 5),
+                        Text('Timing: ${details['timing']}'),
+                        // InkWell(
+                        //   onTap: () {
+                        //     // Open the map link
+                        //     launchUrlString(details['timing']??"");
+                        //   },
+                        //   child: Text(
+                        //     'View on Map',
+                        //     style: TextStyle(color: Colors.blue),
+                        //   ),
+                        // ),
+                        Text('B&W Rate: Rs. ${details['bwRate']}'),
+                        Text('Color Rate: Rs. ${details['colorRate']}'),
                         Text('Quality: ${details['quality']}'),
                       ],
                     ),

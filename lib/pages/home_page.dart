@@ -1,7 +1,6 @@
 //LOC = 55
 
 import 'package:flutter/material.dart';
-
 import '../components/default_button.dart';
 
 class HomePage extends StatefulWidget {

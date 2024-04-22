@@ -38,6 +38,7 @@ class _PaymentPageState extends State<PaymentPage> {
       payeeName: "Vedant",
       amount: pay,
     );
+
     Future<UpiResponse> initiateTransaction(UpiApp app) async {
       return _upiIndia.startTransaction(
         app: app,
@@ -48,12 +49,19 @@ class _PaymentPageState extends State<PaymentPage> {
         amount:pay,
       );
     }
-    return  MaterialApp(
-      home:Scaffold(
+
+    return Scaffold(
         appBar: AppBar(
-          toolbarTextStyle: const TextStyle(color: Colors.white),
-          title:const Text('Payment Module'),
+          toolbarTextStyle: TextStyle(color: Colors.white),
+
+          title: Text('Payment Module',
+            style: TextStyle(
+              color: Colors.white, // Set text color to white
+              fontWeight: FontWeight.bold, // Set text font weight to bold
+            ),
+          ),
           backgroundColor: Colors.blue,
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
@@ -99,9 +107,9 @@ class _PaymentPageState extends State<PaymentPage> {
               ),
             ),
             BottomNavigationBarItem(
-                label: 'Map',
+                label: 'Details',
                 icon: Icon(
-                  Icons.map,
+                  Icons.info_outline,
                   color: Colors.black,
                   size: 24.0,
                   semanticLabel: 'Text to announce in accessibility modes',
@@ -128,9 +136,6 @@ class _PaymentPageState extends State<PaymentPage> {
             }
           },
         ),
-      ),
-      debugShowCheckedModeBanner: false,
-
     );
   }
 }
