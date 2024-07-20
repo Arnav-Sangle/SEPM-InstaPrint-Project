@@ -1,16 +1,21 @@
-# insta_print_app
+# Insta_Print_App
 
-A new Flutter project.
+## Description
+* This is a 3rd year project
+* It is made using *Flutter* and *Firebase* 
 
-## Getting Started
+## Purpose
+* To provide an easy and quick facility for sending print requests at your convenience, from anywhere and anytime, to print shops in your locality
+* To reduce the waiting time due to the large amount of crowd at print shops during college submissions
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+* Print options like -
+  * Pages
+  * Color
+  * Orientation
+  * Single/Double Sided
+* Geolocation of available shops with timings & rates
+* Automatic Cost calculation and Bill display
+* Online advance payment via UPI using a QR code scan
+* Check Live Status of print request
+* Hisory or Log of all requests
