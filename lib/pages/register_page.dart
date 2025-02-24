@@ -1,12 +1,9 @@
 //LOC = 196
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
-import '../components/square_tile.dart';
-import 'login_page.dart';
 
 import 'package:insta_print_app/api/firestore.dart';
 

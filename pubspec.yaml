@@ -27,34 +27,39 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+
+dependency_overrides:
+  win32: ^5.5.3
+
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.29.0
-  firebase_auth: ^4.19.1
+  firebase_core: ^3.11.0
+  firebase_auth: ^5.4.2
   google_sign_in: ^6.2.1
-  upi_payment_qrcode_generator: 1.4.0
-  upi_india: 3.0.1
+  upi_payment_qrcode_generator: ^1.6.0
+#  upi_india: ^3.0.1
 
   # upload
-  firebase_storage: ^11.7.1
+  firebase_storage: ^12.4.2
   file_picker: ^8.0.0
 
-  flutter_map: ^6.1.0
+  flutter_map: ^8.0.0
   latlong2: ^0.9.1
   url_launcher: ^6.2.5
 
-  cloud_firestore: ^4.16.1
+  cloud_firestore: ^5.6.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
 
+  path: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
 
 flutter_launcher_icons:
   android: "launcher_icon"
