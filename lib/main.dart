@@ -2,7 +2,6 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/colors.dart';
 
 import 'package:insta_print_app/pages/home_page.dart';
 import 'package:insta_print_app/pages/login_page.dart';
@@ -11,7 +10,6 @@ import 'package:insta_print_app/pages/register_page.dart';
 import 'package:insta_print_app/pages/request_details_page.dart';
 import 'package:insta_print_app/pages/request_history_page.dart';
 import 'package:insta_print_app/pages/shop_selection_page.dart';
-import 'package:insta_print_app/pages/upload_document_page.dart';
 import 'package:insta_print_app/pages/request_history_details_page.dart';
 
 
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         // hintColor: Colors.pink.shade900,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Color.fromRGBO(255, 255, 255, 1.0)),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(surface: Color.fromRGBO(255, 255, 255, 1.0)),
       ),
 
       home: LoginPage(),
@@ -53,7 +51,7 @@ class MyApp extends StatelessWidget {
         '/shopSelection': (context) => ShopSelectionPage(),
         // '/uploadDocument': (context) => UploadPage(),
         '/requestDetails': (context) => RequestDetailsPage(),
-        '/payment': (context) => PaymentPage(),
+        // '/payment': (context) => PaymentPage(),
 
         '/requestHistory': (context) => RequestHistoryPage(),
         '/requestHistoryDetails': (context) => RequestHistoryDetailsPage(),
